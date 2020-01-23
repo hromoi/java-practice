@@ -1,7 +1,3 @@
-345,Zhenia,Zsavinoww@gmail.com
-234,Nataliia,Natallievna@mail.ru
-345 Zhenia Zsavinoww@gmail.com
-234 Nataliia Natallievna@mail.ru
-345 Zhenia Zsavinoww@gmail.com
-234 Nataliia Natallievna@mail.ru
-345 Zhenia Zsavinoww@gmail.com
+345,Zhenia
+234,Alexei
+7,Alexei

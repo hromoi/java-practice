@@ -1,7 +1,15 @@
 public class Skill {
     private long id;
     private String name;
-    private String email;
+
+    public Skill(){
+
+    }
+
+    public Skill(long id, String name){
+        this.id = id;
+        this.name = name;
+    }
 
     public String getName(){
         return name;
@@ -9,10 +17,6 @@ public class Skill {
 
     public long getId(){
         return id;
-    }
-
-    public String getEmail(){
-        return email;
     }
 
     public void setId(long id){
@@ -23,12 +27,8 @@ public class Skill {
         this.name = name;
     }
 
-    public void setEmail(String email){
-        this.email = email;
-    }
-
     @Override
     public String toString(){
-        return id + " " + name + " " + email;
+        return id + " " + name;
     }
 }
