@@ -6,7 +6,7 @@ public class SkillRepository {
 
     public Skill getById(Long id){
         Skill skill = new Skill();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String[] array;
             String str;
             for (int i = 0; i <= id; i++) {
@@ -25,7 +25,7 @@ public class SkillRepository {
 
     public List<Skill> getAll(){
         ArrayList<Skill> myList = new ArrayList<>();;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str;
             String[] array;
             do {
@@ -41,7 +41,7 @@ public class SkillRepository {
     }
 
     public Skill save(Skill skill){
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt", true)))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt", true)))){
             writer.write(new String(skill.getId() + "," + skill.getName()));
         } catch (IOException e){
             System.out.println("error i/o");
@@ -53,7 +53,7 @@ public class SkillRepository {
         ArrayList<Skill> myList = new ArrayList<>();
         ArrayList<Skill> resultMyList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str = null;
             String[] array;
             do{
@@ -71,7 +71,7 @@ public class SkillRepository {
                 resultMyList.add(skill);
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             for (Skill skill : resultMyList) {
                 writer.write(new String(skill.getId() + "," + skill.getName() + "\n"));
             }
@@ -83,7 +83,7 @@ public class SkillRepository {
     public Skill update(Skill skill){
         ArrayList<Skill> myList = new ArrayList<>();
         ArrayList<Skill> resultMyList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str;
             do {
                 if ((str = reader.readLine()) != null){
@@ -100,7 +100,7 @@ public class SkillRepository {
                 resultMyList.add(obj);
             }
         }
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skill.txt")))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             for (Skill resultObj : resultMyList) {
                 writer.write(new String(resultObj.getId() + "," + resultObj.getName() + "\n"));
             }
