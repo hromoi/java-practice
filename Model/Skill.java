@@ -1,18 +1,20 @@
+package Model;
+
 public class Skill {
     private long id;
-    private String name;
+    private String skill;
 
     public Skill(){
 
     }
 
-    public Skill(long id, String name){
+    public Skill(long id, String skill){
         this.id = id;
-        this.name = name;
+        this.skill = skill;
     }
 
     public String getName(){
-        return name;
+        return skill;
     }
 
     public long getId(){
@@ -23,12 +25,12 @@ public class Skill {
         this.id = id;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setName(String skill){
+        this.skill = skill;
     }
 
     @Override
     public String toString(){
-        return id + " " + name;
+        return id + " " + skill;
     }
 }

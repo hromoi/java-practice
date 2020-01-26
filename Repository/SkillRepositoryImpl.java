@@ -1,8 +1,12 @@
+package Repository;
+
+import Model.Skill;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkillRepository {
+public class SkillRepositoryImpl implements SkillRepository{
 
     public Skill getById(Long id){
         Skill skill = new Skill();
@@ -24,7 +28,7 @@ public class SkillRepository {
     }
 
     public List<Skill> getAll(){
-        ArrayList<Skill> myList = new ArrayList<>();;
+        List<Skill> myList = new ArrayList<>();;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str;
             String[] array;
@@ -50,8 +54,8 @@ public class SkillRepository {
     }
 
     public void deleteById(Long id){
-        ArrayList<Skill> myList = new ArrayList<>();
-        ArrayList<Skill> resultMyList = new ArrayList<>();
+        List<Skill> myList = new ArrayList<>();
+        List<Skill> resultMyList = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str = null;
@@ -81,8 +85,8 @@ public class SkillRepository {
     }
 
     public Skill update(Skill skill){
-        ArrayList<Skill> myList = new ArrayList<>();
-        ArrayList<Skill> resultMyList = new ArrayList<>();
+        List<Skill> myList = new ArrayList<>();
+        List<Skill> resultMyList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
             String str;
             do {
@@ -108,5 +112,9 @@ public class SkillRepository {
             System.out.println("error writer i/o");
         }
         return skill;
+    }
+
+    public Skill parse(String str){
+        return new Skill(Long.valueOf(str.split(",+")[0]), str.split(",+")[1]);
     }
 }
