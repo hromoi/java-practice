@@ -1,15 +1,12 @@
-package Main;
+package model;
 
-import Model.Skill;
-import Repository.SkillRepository;
-import Repository.SkillRepositoryImpl;
-
-import java.util.List;
+import repository.SkillRepository;
+import repository.javaio.JavaIOSkillRepositoryImpl;
 
 public class Main {
 
     public static void main(String[] args){
-        SkillRepository skillRepository = (SkillRepository)new SkillRepositoryImpl();
+        SkillRepository skillRepository = (SkillRepository)new JavaIOSkillRepositoryImpl();
 //        Model.Skill skill;
 //        skill = skillRepository.getById(0L);
 //        System.out.println(skill.toString());

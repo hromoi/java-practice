@@ -1,12 +1,13 @@
-package Repository;
+package repository.javaio;
 
-import Model.Skill;
+import model.Skill;
+import repository.SkillRepository;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkillRepositoryImpl implements SkillRepository{
+public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
     public Skill getById(Long id){
         Skill skill = new Skill();
@@ -114,7 +115,7 @@ public class SkillRepositoryImpl implements SkillRepository{
         return skill;
     }
 
-    public Skill parse(String str){
+    private Skill parse(String str){
         return new Skill(Long.valueOf(str.split(",+")[0]), str.split(",+")[1]);
     }
 }

@@ -1,4 +1,4 @@
-package Repository;
+package repository;
 
 import java.util.List;
 
@@ -8,5 +8,4 @@ public interface GenericRepository<T,ID> {
     T update(T type);
     T save(T type);
     void deleteById(ID id);
-    T parse(String str);
 }
