@@ -1,6 +1,6 @@
 package repository;
 
-import model.Skill;
+import service.Skill;
 
 public interface SkillRepository extends GenericRepository<Skill, Long>{
 }

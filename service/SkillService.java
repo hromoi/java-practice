@@ -1,8 +1,8 @@
-package controller;
+package service;
 
 import java.util.List;
 
-public interface SkillController<T> {
+public interface SkillService<T> {
     T update(T t);
     T save(T t);
     T getById(Long id);

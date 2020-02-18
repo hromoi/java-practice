@@ -1,6 +1,6 @@
 package repository.javaio;
 
-import model.Skill;
+import service.Skill;
 import repository.SkillRepository;
 
 import java.io.*;
