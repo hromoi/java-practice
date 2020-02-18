@@ -10,11 +10,11 @@ public class SkillControllerImpl implements SkillController<Skill> {
 
     @Override
     public Skill save(Skill skill){
-        return (Skill) skillService.save(skill);
+        return skillService.save(skill);
     }
     @Override
     public Skill update(Skill skill){
-        return ((Skill) skillService.update(skill));
+        return skillService.update(skill);
     }
     @Override
     public void deleteById(Long id){
@@ -26,6 +26,6 @@ public class SkillControllerImpl implements SkillController<Skill> {
     }
     @Override
     public Skill getById(Long id){
-        return ((Skill) skillService.getById(id));
+        return skillService.getById(id);
     }
 }

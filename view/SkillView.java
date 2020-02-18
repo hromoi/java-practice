@@ -9,34 +9,29 @@ import java.io.InputStreamReader;
 
 public class SkillView {
     private SkillController skillController = new SkillControllerImpl();
-    private SkillView skillView = new SkillView();
-
-    public void print(){
-        skillController.getAll().stream().forEach(System.out::println);
-    }
 
     public void getById(Long id){
-        System.out.println(skillController.getById(id).toString());
+        System.out.println(skillController.getById(id));
     }
 
     public void update(Skill skill){
-        System.out.println(skillController.update(skill).toString());
+        System.out.println(skillController.update(skill));
     }
 
     public void deleteById(Long id){
         skillController.deleteById(id);
-        skillView.print();
+        skillController.getAll().stream().forEach(System.out::println);
     }
 
     public void save(Skill skill){
-        System.out.println(skillController.save(skill).toString());
+        System.out.println(skillController.save(skill));
     }
 
     public void getAll(){
         skillController.getAll().stream().forEach(skill -> System.out.println(skill));
     }
 
-    public void parseAndPrint(){
+    public void parseAndPrint(SkillView skillView){
         String[] str = new String[2];
         BufferedReader buffer;
         try {
