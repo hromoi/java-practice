@@ -1,37 +1,38 @@
 package view;
 
 import controller.SkillController;
-import service.Skill;
+import model.Skill;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class SkillView {
-    private SkillController skillController = new SkillController();
+    private static SkillController skillController = new SkillController();
 
-    public void getById(Long id) {
+    public static void getById(Long id) {
         System.out.println(skillController.getById(id));
     }
 
-    public void update(Skill skill) {
+    public static void update(Skill skill) {
         System.out.println(skillController.update(skill));
     }
 
-    public void deleteById(Long id) {
+    public static void deleteById(Long id) {
         skillController.deleteById(id);
         skillController.getAll().stream().forEach(System.out::println);
     }
 
-    public void save(Skill skill) {
+    public static void save(Skill skill) {
         System.out.println(skillController.save(skill));
     }
 
-    public void getAll() {
+    public static void getAll() {
         skillController.getAll().stream().forEach(skill -> System.out.println(skill));
     }
 
-    public void parseAndPrint(SkillView skillView) {
+    public static void parseAndPrint() {
         String[] str = new String[2];
+        SkillView skillView = new SkillView();
         BufferedReader buffer;
         try {
             buffer = new BufferedReader(new InputStreamReader(System.in));

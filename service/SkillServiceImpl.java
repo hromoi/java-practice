@@ -1,5 +1,6 @@
 package service;
 
+import model.Skill;
 import repository.SkillRepository;
 import repository.javaio.JavaIOSkillRepositoryImpl;
 

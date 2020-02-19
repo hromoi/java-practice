@@ -1,6 +1,6 @@
 package controller;
 
-import service.Skill;
+import model.Skill;
 import service.SkillService;
 import service.SkillServiceImpl;
 

@@ -1,6 +1,6 @@
 package repository.javaio;
 
-import service.Skill;
+import model.Skill;
 import repository.SkillRepository;
 
 import java.io.*;
@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JavaIOSkillRepositoryImpl implements SkillRepository {
+    private final String str = "/Users/user/IdeaProjects/first_crud_application/src/main/resources/files/skills.txt";
 
     public Skill getById(Long id) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(str)))) {
             String str = reader.readLine();
             do {
                 if (str != null && Long.valueOf(str.split(",")[0]) == id) {
@@ -26,7 +27,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     public List<Skill> getAll() {
         List<Skill> myList = new ArrayList<>();
         ;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(str)))) {
             String str;
             do {
                 if ((str = reader.readLine()) != null) {
@@ -40,7 +41,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     public Skill save(Skill skill) {
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt", true)))) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(str, true)))) {
             writer.write(new String(skill.getId() + "," + skill.getName()));
         } catch (IOException e) {
             System.out.println("error i/o");
@@ -52,7 +53,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         List<Skill> myList = new ArrayList<>();
         List<Skill> resultMyList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(str)))) {
             String str = reader.readLine();
             do {
                 if (str != null) {
@@ -68,7 +69,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 resultMyList.add(skill);
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(str)))) {
             for (Skill skill : resultMyList) {
                 writer.write(new String(skill.getId() + "," + skill.getName() + "\n"));
             }
@@ -80,7 +81,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     public Skill update(Skill skill) {
         List<Skill> myList = new ArrayList<>();
         List<Skill> resultMyList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(str)))) {
             String str = reader.readLine();
             do {
                 if (str != null) {
@@ -97,7 +98,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 resultMyList.add(obj);
             }
         }
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(str)))) {
             for (Skill resultObj : resultMyList) {
                 writer.write(new String(resultObj.getId() + "," + resultObj.getName() + "\n"));
             }
