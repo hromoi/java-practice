@@ -2,12 +2,11 @@ package controller;
 
 import model.Skill;
 import service.SkillService;
-import service.SkillServiceImpl;
 
 import java.util.List;
 
 public class SkillController {
-    private SkillService<Skill> skillService = new SkillServiceImpl();
+    private SkillService skillService = new SkillService();
 
     public Skill save(Skill skill) {
         return skillService.save(skill);

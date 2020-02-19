@@ -1,15 +1,31 @@
 package service;
 
+import model.Skill;
+import repository.SkillRepository;
+import repository.javaio.JavaIOSkillRepositoryImpl;
+
 import java.util.List;
 
-public interface SkillService<T> {
-    T update(T t);
+public class SkillService {
+    private SkillRepository skillRepository = new JavaIOSkillRepositoryImpl();
 
-    T save(T t);
+    public Skill update(Skill skill) {
+        return skillRepository.update(skill);
+    }
 
-    T getById(Long id);
+    public List<Skill> getAll() {
+        return skillRepository.getAll();
+    }
 
-    void deleteById(Long id);
+    public Skill save(Skill skill) {
+        return skillRepository.save(skill);
+    }
 
-    List<T> getAll();
+    public Skill getById(Long id) {
+        return skillRepository.getById(id);
+    }
+
+    public void deleteById(Long id) {
+        skillRepository.deleteById(id);
+    }
 }
