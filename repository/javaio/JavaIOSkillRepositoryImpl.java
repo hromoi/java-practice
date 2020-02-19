@@ -9,57 +9,57 @@ import java.util.List;
 
 public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
-    public Skill getById(Long id){
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
-            String[] array;
-            String str;
-            for (int i = 0; i <= id; i++) {
-                if ((str = reader.readLine()) != null && i == id){
+    public Skill getById(Long id) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+            String str = reader.readLine();
+            do {
+                if (str != null && Long.valueOf(str.split(",")[0]) == id) {
                     return parse(str);
                 }
-            }
-        } catch (IOException e){
+            } while ((str = reader.readLine()) != null);
+        } catch (IOException e) {
             System.out.println("error i/o");
         }
         return null;
     }
 
-    public List<Skill> getAll(){
-        List<Skill> myList = new ArrayList<>();;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
+    public List<Skill> getAll() {
+        List<Skill> myList = new ArrayList<>();
+        ;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
             String str;
             do {
-                if ((str = reader.readLine()) != null){
+                if ((str = reader.readLine()) != null) {
                     myList.add(parse(str));
                 }
             } while (str != null);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("error i/o");
         }
         return myList;
     }
 
-    public Skill save(Skill skill){
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt", true)))){
+    public Skill save(Skill skill) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt", true)))) {
             writer.write(new String(skill.getId() + "," + skill.getName()));
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("error i/o");
         }
         return skill;
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         List<Skill> myList = new ArrayList<>();
         List<Skill> resultMyList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
-            String str = null;
-            do{
-                if ((str = reader.readLine()) != null){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+            String str = reader.readLine();
+            do {
+                if (str != null) {
                     myList.add(parse(str));
                 }
-            } while (str != null);
-        } catch (IOException e){
+            } while ((str = reader.readLine()) != null);
+        } catch (IOException e) {
             System.out.println("error reader i/o");
         }
 
@@ -68,46 +68,46 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 resultMyList.add(skill);
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
             for (Skill skill : resultMyList) {
                 writer.write(new String(skill.getId() + "," + skill.getName() + "\n"));
             }
-        } catch (IOException e2){
+        } catch (IOException e2) {
             System.out.println("error writer i/o");
         }
     }
 
-    public Skill update(Skill skill){
+    public Skill update(Skill skill) {
         List<Skill> myList = new ArrayList<>();
         List<Skill> resultMyList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
-            String str;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
+            String str = reader.readLine();
             do {
-                if ((str = reader.readLine()) != null){
-                   myList.add(parse(str));
+                if (str != null) {
+                    myList.add(parse(str));
                 }
-            } while (str != null);
-        } catch (IOException e){
+            } while ((str = reader.readLine()) != null);
+        } catch (IOException e) {
             System.out.println("error reader i/o");
         }
         for (Skill obj : myList) {
-            if (obj.getId() == skill.getId()){
+            if (obj.getId() == skill.getId()) {
                 resultMyList.add(skill);
-            }else{
+            } else {
                 resultMyList.add(obj);
             }
         }
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/Users/user/IdeaProjects/first_crud_application/src/skills.txt")))) {
             for (Skill resultObj : resultMyList) {
                 writer.write(new String(resultObj.getId() + "," + resultObj.getName() + "\n"));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("error writer i/o");
         }
         return skill;
     }
 
-    private Skill parse(String str){
+    private Skill parse(String str) {
         return new Skill(Long.valueOf(str.split(",+")[0]), str.split(",+")[1]);
     }
 }
